@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div><label for="">Nome</label><input id="nome" type="text"></div>
+    <div><label for="">Sobrenome</label><input id="sobrenome" type="text"></div>
+    <div><label for="">Telefone</label><input id="telefone" type="text"></div>
+    <div><label for="">RA</label><input id="ra" type="text"></div>
+    <div>
+        <button onclick="Cadastrar()">Cadastrar</button>
+        <button>Limpar</button>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>Sobrenome</td>
+                <td>Telefone</td>
+                <td>RA</td>
+                <td>Opções</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        function Cadastrar() {
+            var _nome = document.getElementById('nome').value;
+            var _sobrenome = document.getElementById('sobrenome').value;
+            var _telefone = document.getElementById('telefone').value;
+            var _ra = document.getElementById('ra').value;
+
+            aluno = {
+                nome: _nome,
+                sobrenome: _sobrenome,
+                telefone: _telefone,
+                ra: _ra
+            }
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', 'https://localhost:44314/api/Aluno', true);
+
+            xhr.onload = function() {
+                console.log(this.responseText);
+            }
+
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>

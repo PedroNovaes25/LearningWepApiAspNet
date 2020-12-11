@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "Nome": "Pedrin",
+    "SobreNome": "Matador",
+    "Telefone": "11 966039570",
+    "Ra": 1192054
+  },
+  {
+    "Id": 2,
+    "Nome": "Barbara",
+    "SobreNome": "Teixeira",
+    "Telefone": "11 996603586",
+    "Ra": 1192055
+  },
+  {
+    "Id": 3,
+    "Nome": "Lucas",
+    "SobreNome": "Amaral",
+    "Telefone": "11 965483265",
+    "Ra": 1192056
+  },
+  {
+    "Id": 4,
+    "Nome": "Paula",
+    "SobreNome": "Vadão",
+    "Telefone": "11 958456284",
+    "Ra": 1192057
+  },
+  {
+    "Id": 6,
+    "Nome": "Felipinho",
+    "SobreNome": "Souza",
+    "Telefone": "11 958456289",
+    "Ra": 1192058
+  }
+]
