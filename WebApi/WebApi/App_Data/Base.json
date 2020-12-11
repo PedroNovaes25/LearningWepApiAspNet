@@ -2,36 +2,64 @@
   {
     "Id": 1,
     "Nome": "Pedrin",
-    "SobreNome": "Matador",
+    "Sobrenome": "Matador",
     "Telefone": "11 966039570",
     "Ra": 1192054
   },
   {
     "Id": 2,
     "Nome": "Barbara",
-    "SobreNome": "Teixeira",
+    "Sobrenome": "Teixeira",
     "Telefone": "11 996603586",
     "Ra": 1192055
   },
   {
     "Id": 3,
     "Nome": "Lucas",
-    "SobreNome": "Amaral",
+    "Sobrenome": "Amaral",
     "Telefone": "11 965483265",
     "Ra": 1192056
   },
   {
     "Id": 4,
     "Nome": "Paula",
-    "SobreNome": "Vadão",
+    "Sobrenome": "Vadão",
     "Telefone": "11 958456284",
     "Ra": 1192057
   },
   {
     "Id": 6,
     "Nome": "Felipinho",
-    "SobreNome": "Souza",
+    "Sobrenome": "Souza",
     "Telefone": "11 958456289",
     "Ra": 1192058
+  },
+  {
+    "Id": 7,
+    "Nome": "Pedro",
+    "Sobrenome": "Novaes",
+    "Telefone": "6546884654",
+    "Ra": 6846565
+  },
+  {
+    "Id": 8,
+    "Nome": "Barbara ",
+    "Sobrenome": "Gatinha",
+    "Telefone": "65456465",
+    "Ra": 2315455
+  },
+  {
+    "Id": 9,
+    "Nome": "Roberto",
+    "Sobrenome": "Nobrega",
+    "Telefone": "68498498",
+    "Ra": 3546554
+  },
+  {
+    "Id": 10,
+    "Nome": "Alisson",
+    "Sobrenome": "Amorim",
+    "Telefone": "984545665",
+    "Ra": 3216556
   }
 ]

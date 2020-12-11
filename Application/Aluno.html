@@ -8,13 +8,15 @@
 </head>
 
 <body>
-    <div><label for="">Nome</label><input id="nome" type="text"></div>
-    <div><label for="">Sobrenome</label><input id="sobrenome" type="text"></div>
-    <div><label for="">Telefone</label><input id="telefone" type="text"></div>
-    <div><label for="">RA</label><input id="ra" type="text"></div>
+
+    <h2 id="titulo">Cadastrar Aluno</h2>
+    <div><label for="">Nome </label><input id="nome" type="text"></div>
+    <div><label for="">Sobrenome </label><input id="sobrenome" type="text"></div>
+    <div><label for="">Telefone </label><input id="telefone" type="text"></div>
+    <div><label for="">RA </label><input id="ra" type="text"></div>
     <div>
-        <button onclick="Cadastrar()">Cadastrar</button>
-        <button>Limpar</button>
+        <button id="btnSalvar" onclick="Cadastrar()">Cadastrar</button>
+        <button id="btnCancelar" onclick="Cancelar()">Limpar</button>
     </div>
     <table border="1">
         <thead>
@@ -27,38 +29,131 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
         </tbody>
     </table>
     <script type="text/javascript">
-        function Cadastrar() {
-            var _nome = document.getElementById('nome').value;
-            var _sobrenome = document.getElementById('sobrenome').value;
-            var _telefone = document.getElementById('telefone').value;
-            var _ra = document.getElementById('ra').value;
+        var tbody = document.querySelector('table tbody') /* tbody está dentro do table*/
+        var aluno = {};
 
-            aluno = {
-                nome: _nome,
-                sobrenome: _sobrenome,
-                telefone: _telefone,
-                ra: _ra
+        function Cadastrar() {
+
+            aluno.Nome = document.querySelector('#nome').value;
+            aluno.Sobrenome = document.querySelector('#sobrenome').value;
+            aluno.Telefone = document.querySelector('#telefone').value;
+            aluno.Ra = document.querySelector('#ra').value;
+
+            console.log(aluno) //apagar
+
+            if (aluno.Id === undefined || aluno.Id === 0) {
+                SalvarEstudantes('POST', 0, aluno);
+            } else {
+
+                SalvarEstudantes('PUT', aluno.Id, aluno)
             }
+            CarregarEstudantes();
+        }
+
+        function Cancelar() {
+            var btnSalvar = document.querySelector('#btnSalvar')
+            var btnCancelar = document.querySelector('#btnCancelar')
+            var titulo = document.querySelector('#titulo')
+            document.querySelector('#nome').value = '';
+            document.querySelector('#sobrenome').value = '';
+            document.querySelector('#telefone').value = '';
+            document.querySelector('#ra').value = '';
+
+            aluno = {};
+
+            btnSalvar.textContent = 'Cadastrar';
+            btnCancelar.textContent = 'Limpar';
+
+            titulo.textContent = 'Cadastrar Aluno';
+
+        }
+
+
+        function CarregarEstudantes() {
+            tbody.innerHTML = '';
 
             var xhr = new XMLHttpRequest();
 
-            xhr.open('GET', 'https://localhost:44314/api/Aluno', true);
+            xhr.open('GET', `https://localhost:44314/api/Aluno`, true);
 
             xhr.onload = function() {
-                console.log(this.responseText);
+                var estudantes = JSON.parse(this.responseText);
+                for (var indice in estudantes) {
+
+                    AdicionaLinha(estudantes[indice]);
+                }
             }
 
             xhr.send();
+        }
+
+        function SalvarEstudantes(metodo, id, corpo) {
+            var xhr = new XMLHttpRequest();
+
+            if (id === undefined || id === 0) {
+                id = '';
+            }
+
+            xhr.open(metodo, `https://localhost:44314/api/Aluno/${id}`, false);
+
+            xhr.setRequestHeader('content-type', 'application/json');
+            xhr.send(JSON.stringify(corpo)); //transforma o json em string
+        }
+
+        CarregarEstudantes();
+
+        function EditarEstudante(estudante) {
+            var btnSalvar = document.querySelector('#btnSalvar')
+            var btnCancelar = document.querySelector('#btnCancelar')
+            var titulo = document.querySelector('#titulo')
+            document.querySelector('#nome').value = estudante.Nome;
+            document.querySelector('#sobrenome').value = estudante.Sobrenome;
+            document.querySelector('#telefone').value = estudante.Telefone;
+            document.querySelector('#ra').value = estudante.Ra;
+
+            btnSalvar.textContent = 'Salvar';
+            btnCancelar.textContent = 'Cancelar';
+
+            titulo.textContent = `Editando Aluno ${estudante.Nome}`;
+
+            aluno = estudante;
+            console.log(aluno) //apagar
+
+        }
+
+
+
+        function DeletarEstudante(id) {
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('DELETE', `https://localhost:44314/api/Aluno/${id}`, false);
+
+            xhr.send();
+
+        }
+
+        function ExcluirEstudante(id) {
+            DeletarEstudante(id);
+            CarregarEstudantes();
+        }
+
+
+        function AdicionaLinha(estudante) {
+            var trow = `<tr>
+                            <td>${estudante.Nome}</td>
+                            <td>${estudante.Sobrenome}</td>
+                            <td>${estudante.Telefone}</td>
+                            <td>${estudante.Ra}</td>
+                            <td>
+                            <button onclick='EditarEstudante(${JSON.stringify(estudante)})'>Editar</button>
+                            <button onclick='ExcluirEstudante(${estudante.Id})'>Deletar</button>
+                            </td>
+                        </tr>
+                        `
+            tbody.innerHTML += trow;
         }
     </script>
 </body>
