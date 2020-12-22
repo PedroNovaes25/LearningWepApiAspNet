@@ -11,7 +11,7 @@
     "Nome": "Barbara",
     "Sobrenome": "Teixeira",
     "Telefone": "11 996603586",
-    "Ra": 1192055
+    "Ra": 758765683
   },
   {
     "Id": 3,
@@ -40,26 +40,5 @@
     "Sobrenome": "Novaes",
     "Telefone": "6546884654",
     "Ra": 6846565
-  },
-  {
-    "Id": 8,
-    "Nome": "Barbara ",
-    "Sobrenome": "Gatinha",
-    "Telefone": "65456465",
-    "Ra": 2315455
-  },
-  {
-    "Id": 9,
-    "Nome": "Roberto",
-    "Sobrenome": "Nobrega",
-    "Telefone": "68498498",
-    "Ra": 3546554
-  },
-  {
-    "Id": 10,
-    "Nome": "Alisson",
-    "Sobrenome": "Amorim",
-    "Telefone": "984545665",
-    "Ra": 3216556
   }
 ]

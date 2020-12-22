@@ -1,0 +1,6 @@
+BootStrap (Visual)
+https://blog.getbootstrap.com/2016/07/25/bootstrap-3-3-7-released/
+
+Caixar de diálogo
+http://bootboxjs.com/
+
